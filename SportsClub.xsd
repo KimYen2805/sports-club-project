@@ -129,8 +129,8 @@
                     <xs:element name="id" type="xs:positiveInteger"/>
                     <xs:element name="name" type="xs:string"/>
                     <xs:element name="type" type="xs:string"/>
-                    <xs:element name="quantity" type="xs:positiveInteger"/>
                     <xs:element name="condition" type="xs:string"/>
+                    <xs:element name="quantity" type="xs:positiveInteger"/>
                     <!-- Link to a facility -->
                     <xs:element name="facilityId" type="xs:positiveInteger"/>
                   </xs:sequence>
