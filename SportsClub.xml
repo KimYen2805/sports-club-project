@@ -190,32 +190,32 @@
             <id>1</id>
             <name>Adidas Football</name>
             <type>Ball</type>
-            <quantity>50</quantity>
             <condition>Good</condition>
+            <quantity>50</quantity>
             <facilityId>1</facilityId>
         </Equipment>
         <Equipment>
             <id>2</id>
             <name> Wilson Tennis Racket</name>
             <type>Racket</type>
-            <quantity>30</quantity>
             <condition>Good</condition>
+            <quantity>30</quantity>
             <facilityId>2</facilityId>
         </Equipment>
         <Equipment>
             <id>3</id>
             <name>Spalding Basketball</name>
             <type>Ball</type>
-            <quantity>40</quantity>
             <condition>Good</condition>
+            <quantity>40</quantity>
             <facilityId>3</facilityId>
         </Equipment>
         <Equipment>
             <id>4</id>
             <name>Speedo Goggles</name>
             <type>Accessory</type>
-            <quantity>20</quantity>
             <condition>Good</condition>
+            <quantity>20</quantity>
             <facilityId>4</facilityId>
         </Equipment>
 </Equipments>
