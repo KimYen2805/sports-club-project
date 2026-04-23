@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompetitionCalendar>
+  <Event>
+    <name>UEFA Champions League</name>
+    <format>Knockout</format>
+    <startDate>2024-02-01</startDate>
+    <endDate>2024-05-30</endDate>
+    <prize>10000000</prize>
+    <venue>
+      <facilityName>Stade de France</facilityName>
+      <date>2024-02-01</date>
+      <startTime>20:00:00</startTime>
+      <endTime>22:00:00</endTime>
+    </venue>
+    <participants>
+      <team>
+        <teamName>Paris Saint-Germain</teamName>
+        <result>Winner</result>
+      </team>
+    </participants>
+  </Event>
+  <Event>
+    <name>Wimbledon</name>
+    <format>League</format>
+    <startDate>2024-06-01</startDate>
+    <endDate>2024-06-30</endDate>
+    <prize>5000000</prize>
+    <venue>
+      <facilityName>Roland Garros</facilityName>
+      <date>2024-06-01</date>
+      <startTime>10:00:00</startTime>
+      <endTime>18:00:00</endTime>
+    </venue>
+    <participants>
+      <team>
+        <teamName>World Team Tennis</teamName>
+        <result>Runner-up</result>
+      </team>
+    </participants>
+  </Event>
+</CompetitionCalendar>
