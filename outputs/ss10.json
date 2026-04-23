@@ -19,14 +19,14 @@
             "sport": "Football",
             "level": "Professional",
             "membership": 
-                    {
-                        "plan": "Premium",
-                        "fee": 1000,
-                        "status": "Active",
-                        "startDate": "2024-01-01",
-                        "endDate": "2024-12-31"
-                    }
-                
+        {
+            "plan": "Premium",
+            "fee": 1000,
+            "status": "Active",
+            "startDate": "2024-01-01",
+            "endDate": "2024-12-31"
+        }
+    
         },
         {
             "id": 3,
@@ -36,14 +36,14 @@
             "sport": "Tennis",
             "level": "Professional",
             "membership": 
-                    {
-                        "plan": "Standard",
-                        "fee": 1000,
-                        "status": "Active",
-                        "startDate": "2024-01-01",
-                        "endDate": "2024-12-31"
-                    }
-                
+        {
+            "plan": "Standard",
+            "fee": 1000,
+            "status": "Active",
+            "startDate": "2024-01-01",
+            "endDate": "2024-12-31"
+        }
+    
         },
         {
             "id": 4,
@@ -62,14 +62,14 @@
             "sport": "Tennis",
             "level": "Professional",
             "membership": 
-                    {
-                        "plan": "Premium",
-                        "fee": 1000,
-                        "status": "Active",
-                        "startDate": "2024-01-01",
-                        "endDate": "2024-12-31"
-                    }
-                
+        {
+            "plan": "Premium",
+            "fee": 1000,
+            "status": "Active",
+            "startDate": "2024-01-01",
+            "endDate": "2024-12-31"
+        }
+    
         },
         {
             "id": 5,

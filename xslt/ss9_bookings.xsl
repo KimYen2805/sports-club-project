@@ -19,11 +19,10 @@
 
     <xsl:template match="TrainingBooking">
         <xsl:variable name="fid" select="facilityId"/>
-        <xsl:variable name="sid" select="trainingSessionId"/>
         {
             "id": <xsl:value-of select="id"/>,
             "facility": "<xsl:value-of select="/SportsClub/Facilities/Facility[id = $fid]/name"/>",
-            "trainingSessionId": <xsl:value-of select="$sid"/>,
+            "trainingSessionId": <xsl:value-of select="trainingSessionId"/>,
             "date": "<xsl:value-of select="date"/>",
             "startTime": "<xsl:value-of select="startTime"/>",
             "endTime": "<xsl:value-of select="endTime"/>"
