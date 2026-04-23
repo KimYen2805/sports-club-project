@@ -26,19 +26,19 @@
             "email": "<xsl:value-of select="email"/>",
             "sport": "<xsl:value-of select="sport"/>",
             "level": "<xsl:value-of select="level"/>",
-            "membership": <xsl:choose>
-                <xsl:when test="$membership">
-                    {
-                        "plan": "<xsl:value-of select="$membership/plan"/>",
-                        "fee": <xsl:value-of select="$membership/fee"/>,
-                        "status": "<xsl:value-of select="$membership/status"/>",
-                        "startDate": "<xsl:value-of select="$membership/startDate"/>",
-                        "endDate": "<xsl:value-of select="$membership/endDate"/>"
-                    }
-                </xsl:when>
-                <xsl:otherwise>null</xsl:otherwise>
-            </xsl:choose>
+            "membership": <xsl:apply-templates select="$membership"/>
+            <xsl:if test="not($membership)">null</xsl:if>
         }<xsl:if test="position() != last()">,</xsl:if>
+    </xsl:template>
+
+    <xsl:template match="Membership">
+        {
+            "plan": "<xsl:value-of select="plan"/>",
+            "fee": <xsl:value-of select="fee"/>,
+            "status": "<xsl:value-of select="status"/>",
+            "startDate": "<xsl:value-of select="startDate"/>",
+            "endDate": "<xsl:value-of select="endDate"/>"
+        }
     </xsl:template>
 
 </xsl:stylesheet>
