@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 <!--
   XML Schema Definition (XSD) for Sports Club Management System
-  Defines structure, types, constraints and referential integrity
-  for all entities: Members, Coaches, Teams, Facilities, Equipment,
-  Memberships, TrainingSessions, Bookings, Competitions.
--->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  This XSD defines the structure and constraints of the XML data used to manage a sports club
+  
+  It includes the following groups of entities:
 
+  - PEOPLE: Member, Coach
+  - ACTIVITY: Team, TrainingSession, Competition
+  - BOOKING: TrainingBooking, CompetitionBooking
+  - LINK TABLES: Membership, TeamMembership, CoachingAssignment, CompetitionParticipation
+  - RESOURCES: Facility, Equipment
+
+  Primary keys (xs:key) and foreign keys (xs:keyref) are defined at the root level
+  to enforce uniqueness and referential integrity across all entities.
+
+-->
   <!-- SIMPLE TYPES -->
 
   <!-- Sport must be one of these values -->
