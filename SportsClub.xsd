@@ -7,7 +7,7 @@
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-  <!-- SIMPLE TYPES -->
+ <!-- SIMPLE TYPES -->
 
   <!-- Sport must be one of these values -->
   <xs:simpleType name="SportType">
@@ -100,7 +100,7 @@
   <!-- Phone pattern -->
   <xs:simpleType name="PhoneType">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\d{3}-\d{3}-\d{4}"/>
+      <xs:pattern value="\+?[\d\s\-\(\)]{7,20}"/> <!-- For international numbers Add Kim -->
     </xs:restriction>
   </xs:simpleType>
 
@@ -293,7 +293,7 @@
         <xs:element name="TrainingSessions">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="TrainingSession" maxOccurs="unbounded">
+              <xs:element name="TrainingSession" minOccurs ="0" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element name="id" type="xs:positiveInteger"/>
@@ -321,7 +321,7 @@
         <xs:element name="TrainingBookings">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="TrainingBooking" maxOccurs="unbounded">
+              <xs:element name="TrainingBooking" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element name="id" type="xs:positiveInteger"/>
@@ -341,11 +341,12 @@
         <xs:element name="Competitions">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Competition" maxOccurs="unbounded">
+              <xs:element name="Competition" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element name="id" type="xs:positiveInteger"/>
                     <xs:element name="name" type="xs:string"/>
+                     <xs:element name="sport" type="SportType"/><!-- Add Kim-->
                     <xs:element name="format" type="FormatType"/>
                     <xs:element name="startDate" type="xs:date"/>
                     <xs:element name="endDate" type="xs:date"/>
@@ -361,7 +362,7 @@
         <xs:element name="CompetitionParticipations">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="CompetitionParticipation" maxOccurs="unbounded">
+              <xs:element name="CompetitionParticipation" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element name="id" type="xs:positiveInteger"/>
@@ -379,7 +380,7 @@
         <xs:element name="CompetitionBookings">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="CompetitionBooking" maxOccurs="unbounded">
+              <xs:element name="CompetitionBooking" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element name="id" type="xs:positiveInteger"/>
