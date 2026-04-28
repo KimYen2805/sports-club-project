@@ -381,6 +381,7 @@
         <Competition>
             <id>1</id>
             <name>UEFA Champions League</name>
+            <sport>Football</sport>
             <format>Knockout</format>
             <startDate>2024-02-01</startDate>
             <endDate>2024-05-30</endDate>   
@@ -389,6 +390,7 @@
         <Competition>
             <id>2</id>
             <name>Wimbledon</name>
+            <sport>Tennis</sport>
             <format>League</format>
             <startDate>2024-06-01</startDate>
             <endDate>2024-06-30</endDate>
