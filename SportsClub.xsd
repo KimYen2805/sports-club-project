@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 <!--
-  XML Schema Definition (XSD) for Sports Club Management System
+  XML Schema Definition for Sports Club Management System
   This XSD defines the structure and constraints of the XML data used to manage a sports club
   
   It includes the following groups of entities:
@@ -12,7 +12,7 @@
   - LINK TABLES: Membership, TeamMembership, CoachingAssignment, CompetitionParticipation
   - RESOURCES: Facility, Equipment
 
-  Primary keys (xs:key) and foreign keys (xs:keyref) are defined at the root level
+  Primary keys and foreign keys are defined at the root level
   to enforce uniqueness and referential integrity across all entities.
 
 -->
@@ -109,7 +109,7 @@
   <!-- Phone pattern -->
   <xs:simpleType name="PhoneType">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\+?[\d\s\-\(\)]{7,20}"/> <!-- For international numbers Add Kim -->
+      <xs:pattern value="\+?[\d\s\-\(\)]{7,20}"/> <!-- For international numbers-->
     </xs:restriction>
   </xs:simpleType>
 
@@ -355,7 +355,7 @@
                   <xs:sequence>
                     <xs:element name="id" type="xs:positiveInteger"/>
                     <xs:element name="name" type="xs:string"/>
-                     <xs:element name="sport" type="SportType"/><!-- Add Kim-->
+                     <xs:element name="sport" type="SportType"/>
                     <xs:element name="format" type="FormatType"/>
                     <xs:element name="startDate" type="xs:date"/>
                     <xs:element name="endDate" type="xs:date"/>
