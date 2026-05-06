@@ -1,0 +1,4 @@
+lxml>=5.0.0
+pandas
+plotly
+streamlit
