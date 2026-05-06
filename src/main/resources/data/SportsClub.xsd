@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  XML Schema Definition (XSD) for Sports Club Management System
+  Defines structure, types, constraints and referential integrity
+  for all entities: Members, Coaches, Teams, Facilities, Equipment,
+  Memberships, TrainingSessions, Bookings, Competitions.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- SIMPLE TYPES -->
+
+  <!-- Sport must be one of these values -->
+  <xs:simpleType name="SportType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Football"/>
+      <xs:enumeration value="Tennis"/>
+      <xs:enumeration value="Basketball"/>
+      <xs:enumeration value="Swimming"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Level must be one of these values -->
+  <xs:simpleType name="LevelType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Amateur"/>
+      <xs:enumeration value="Intermediate"/>
+      <xs:enumeration value="Professional"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Membership plan -->
+  <xs:simpleType name="PlanType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Basic"/>
+      <xs:enumeration value="Standard"/>
+      <xs:enumeration value="Premium"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Status for membership and facility -->
+  <xs:simpleType name="StatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Active"/>
+      <xs:enumeration value="Inactive"/>
+      <xs:enumeration value="Expired"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Facility status -->
+  <xs:simpleType name="FacilityStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Available"/>
+      <xs:enumeration value="Unavailable"/>
+      <xs:enumeration value="Under Maintenance"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Equipment condition -->
+  <xs:simpleType name="ConditionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Good"/>
+      <xs:enumeration value="Fair"/>
+      <xs:enumeration value="Poor"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Facility type -->
+  <xs:simpleType name="FacilityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Indoor"/>
+      <xs:enumeration value="Outdoor"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Competition format -->
+  <xs:simpleType name="FormatType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Knockout"/>
+      <xs:enumeration value="League"/>
+      <xs:enumeration value="Round Robin"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- License level for coaches -->
+  <xs:simpleType name="LicenseType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Amateur"/>
+      <xs:enumeration value="Intermediate"/>
+      <xs:enumeration value="Pro"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Email pattern -->
+  <xs:simpleType name="EmailType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[^@]+@[^@]+\.[^@]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Phone pattern -->
+  <xs:simpleType name="PhoneType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d{3}-\d{3}-\d{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Positive decimal for fees and rates -->
+  <xs:simpleType name="PositiveDecimal">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ROOT -->
+  <xs:element name="SportsClub">
+    <xs:complexType>
+      <xs:sequence>
+
+        <!-- MEMBERS -->
+        <xs:element name="Members">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Member" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" type="xs:positiveInteger"/>
+                    <xs:element name="firstName" type="xs:string"/>
+                    <xs:element name="lastName" type="xs:string"/>
+                    <xs:element name="email" type="EmailType"/>
+                    <xs:element name="phone" type="PhoneType"/>
+                    <xs:element name="sport" type="SportType"/>
+                    <xs:element name="level" type="LevelType"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- COACHES -->
+        <xs:element name="Coaches">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Coach" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" type="xs:positiveInteger"/>
+                    <xs:element name="firstName" type="xs:string"/>
+                    <xs:element name="lastName" type="xs:string"/>
+                    <xs:element name="sport" type="SportType"/>
+                    <xs:element name="licenseLevel" type="LicenseType"/>
+                    <xs:element name="experienceYears">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:integer">
+                          <xs:minInclusive value="0"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- TEAMS -->
+        <xs:element name="Teams">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Team" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" type="xs:positiveInteger"/>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="sport" type="SportType"/>
+                    <xs:element name="level" type="LevelType"/>
+                    <xs:element name="season" type="xs:string"/>
+                    <xs:element name="maxPlayers">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:positiveInteger">
+                          <xs:minInclusive value="1"/>
+                          <xs:maxInclusive value="50"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- FACILITIES -->
+        <xs:element name="Facilities">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Facility" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" type="xs:positiveInteger"/>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="type" type="FacilityType"/>
+                    <xs:element name="capacity" type="xs:positiveInteger"/>
+                    <xs:element name="hourlyRate" type="PositiveDecimal"/>
+                    <xs:element name="status" type="FacilityStatusType"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- EQUIPMENTS -->
+        <xs:element name="Equipments">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Equipment" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" type="xs:positiveInteger"/>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="type" type="xs:string"/>
+                    <xs:element name="condition" type="ConditionType"/>
+                    <xs:element name="quantity" type="xs:positiveInteger"/>
+                    <xs:element name="facilityId" type="xs:positiveInteger"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- MEMBERSHIPS -->
+        <xs:element name="Memberships">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Membership" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" type="xs:positiveInteger"/>
+                    <xs:element name="memberId" type="xs:positiveInteger"/>
+                    <xs:element name="plan" type="PlanType"/>
+                    <xs:element name="fee" type="PositiveDecimal"/>
+                    <xs:element name="status" type="StatusType"/>
+                    <xs:element name="startDate" type="xs:date"/>
+                    <xs:element name="endDate" type="xs:date"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- TEAM MEMBERSHIPS -->
+        <xs:element name="TeamMemberships">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TeamMembership" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" type="xs:positiveInteger"/>
+                    <xs:element name="memberId" type="xs:positiveInteger"/>
+                    <xs:element name="teamId" type="xs:positiveInteger"/>
+                    <xs:element name="role" type="xs:string"/>
+                    <xs:element name="joinDate" type="xs:date"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- COACHING ASSIGNMENTS -->
+        <xs:element name="CoachingAssignments">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CoachingAssignment" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" type="xs:positiveInteger"/>
+                    <xs:element name="coachId" type="xs:positiveInteger"/>
+                    <xs:element name="teamId" type="xs:positiveInteger"/>
+                    <xs:element name="role" type="xs:string"/>
+                    <xs:element name="startDate" type="xs:date"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- TRAINING SESSIONS -->
+        <xs:element name="TrainingSessions">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TrainingSession" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" type="xs:positiveInteger"/>
+                    <xs:element name="teamId" type="xs:positiveInteger"/>
+                    <xs:element name="coachId" type="xs:positiveInteger"/>
+                    <xs:element name="date" type="xs:date"/>
+                    <xs:element name="startTime" type="xs:time"/>
+                    <xs:element name="duration">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:positiveInteger">
+                          <xs:minInclusive value="30"/>
+                          <xs:maxInclusive value="240"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="location" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- TRAINING BOOKINGS -->
+        <xs:element name="TrainingBookings">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TrainingBooking" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" type="xs:positiveInteger"/>
+                    <xs:element name="facilityId" type="xs:positiveInteger"/>
+                    <xs:element name="trainingSessionId" type="xs:positiveInteger"/>
+                    <xs:element name="date" type="xs:date"/>
+                    <xs:element name="startTime" type="xs:time"/>
+                    <xs:element name="endTime" type="xs:time"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- COMPETITIONS -->
+        <xs:element name="Competitions">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Competition" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" type="xs:positiveInteger"/>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="format" type="FormatType"/>
+                    <xs:element name="startDate" type="xs:date"/>
+                    <xs:element name="endDate" type="xs:date"/>
+                    <xs:element name="prize" type="PositiveDecimal"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- COMPETITION PARTICIPATIONS -->
+        <xs:element name="CompetitionParticipations">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CompetitionParticipation" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" type="xs:positiveInteger"/>
+                    <xs:element name="teamId" type="xs:positiveInteger"/>
+                    <xs:element name="competitionId" type="xs:positiveInteger"/>
+                    <xs:element name="result" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- COMPETITION BOOKINGS -->
+        <xs:element name="CompetitionBookings">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CompetitionBooking" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" type="xs:positiveInteger"/>
+                    <xs:element name="facilityId" type="xs:positiveInteger"/>
+                    <xs:element name="competitionId" type="xs:positiveInteger"/>
+                    <xs:element name="date" type="xs:date"/>
+                    <xs:element name="startTime" type="xs:time"/>
+                    <xs:element name="endTime" type="xs:time"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+
+    <!-- PRIMARY KEYS -->
+    <xs:key name="memberIdKey">
+      <xs:selector xpath="Members/Member"/>
+      <xs:field xpath="id"/>
+    </xs:key>
+    <xs:key name="coachIdKey">
+      <xs:selector xpath="Coaches/Coach"/>
+      <xs:field xpath="id"/>
+    </xs:key>
+    <xs:key name="teamIdKey">
+      <xs:selector xpath="Teams/Team"/>
+      <xs:field xpath="id"/>
+    </xs:key>
+    <xs:key name="facilityIdKey">
+      <xs:selector xpath="Facilities/Facility"/>
+      <xs:field xpath="id"/>
+    </xs:key>
+    <xs:key name="equipmentIdKey">
+      <xs:selector xpath="Equipments/Equipment"/>
+      <xs:field xpath="id"/>
+    </xs:key>
+    <xs:key name="membershipIdKey">
+      <xs:selector xpath="Memberships/Membership"/>
+      <xs:field xpath="id"/>
+    </xs:key>
+    <xs:key name="teamMembershipIdKey">
+      <xs:selector xpath="TeamMemberships/TeamMembership"/>
+      <xs:field xpath="id"/>
+    </xs:key>
+    <xs:key name="coachingAssignmentIdKey">
+      <xs:selector xpath="CoachingAssignments/CoachingAssignment"/>
+      <xs:field xpath="id"/>
+    </xs:key>
+    <xs:key name="trainingSessionIdKey">
+      <xs:selector xpath="TrainingSessions/TrainingSession"/>
+      <xs:field xpath="id"/>
+    </xs:key>
+    <xs:key name="trainingBookingIdKey">
+      <xs:selector xpath="TrainingBookings/TrainingBooking"/>
+      <xs:field xpath="id"/>
+    </xs:key>
+    <xs:key name="competitionIdKey">
+      <xs:selector xpath="Competitions/Competition"/>
+      <xs:field xpath="id"/>
+    </xs:key>
+    <xs:key name="competitionParticipationIdKey">
+      <xs:selector xpath="CompetitionParticipations/CompetitionParticipation"/>
+      <xs:field xpath="id"/>
+    </xs:key>
+    <xs:key name="competitionBookingIdKey">
+      <xs:selector xpath="CompetitionBookings/CompetitionBooking"/>
+      <xs:field xpath="id"/>
+    </xs:key>
+
+    <!-- FOREIGN KEYS -->
+    <xs:keyref name="FK_Membership_Member" refer="memberIdKey">
+      <xs:selector xpath="Memberships/Membership"/>
+      <xs:field xpath="memberId"/>
+    </xs:keyref>
+    <xs:keyref name="FK_TeamMembership_Member" refer="memberIdKey">
+      <xs:selector xpath="TeamMemberships/TeamMembership"/>
+      <xs:field xpath="memberId"/>
+    </xs:keyref>
+    <xs:keyref name="FK_TeamMembership_Team" refer="teamIdKey">
+      <xs:selector xpath="TeamMemberships/TeamMembership"/>
+      <xs:field xpath="teamId"/>
+    </xs:keyref>
+    <xs:keyref name="FK_CoachingAssignment_Coach" refer="coachIdKey">
+      <xs:selector xpath="CoachingAssignments/CoachingAssignment"/>
+      <xs:field xpath="coachId"/>
+    </xs:keyref>
+    <xs:keyref name="FK_CoachingAssignment_Team" refer="teamIdKey">
+      <xs:selector xpath="CoachingAssignments/CoachingAssignment"/>
+      <xs:field xpath="teamId"/>
+    </xs:keyref>
+    <xs:keyref name="FK_TrainingSession_Team" refer="teamIdKey">
+      <xs:selector xpath="TrainingSessions/TrainingSession"/>
+      <xs:field xpath="teamId"/>
+    </xs:keyref>
+    <xs:keyref name="FK_TrainingSession_Coach" refer="coachIdKey">
+      <xs:selector xpath="TrainingSessions/TrainingSession"/>
+      <xs:field xpath="coachId"/>
+    </xs:keyref>
+    <xs:keyref name="FK_TrainingBooking_Facility" refer="facilityIdKey">
+      <xs:selector xpath="TrainingBookings/TrainingBooking"/>
+      <xs:field xpath="facilityId"/>
+    </xs:keyref>
+    <xs:keyref name="FK_TrainingBooking_Session" refer="trainingSessionIdKey">
+      <xs:selector xpath="TrainingBookings/TrainingBooking"/>
+      <xs:field xpath="trainingSessionId"/>
+    </xs:keyref>
+    <xs:keyref name="FK_Equipment_Facility" refer="facilityIdKey">
+      <xs:selector xpath="Equipments/Equipment"/>
+      <xs:field xpath="facilityId"/>
+    </xs:keyref>
+    <xs:keyref name="FK_CompetitionParticipation_Team" refer="teamIdKey">
+      <xs:selector xpath="CompetitionParticipations/CompetitionParticipation"/>
+      <xs:field xpath="teamId"/>
+    </xs:keyref>
+    <xs:keyref name="FK_CompetitionParticipation_Competition" refer="competitionIdKey">
+      <xs:selector xpath="CompetitionParticipations/CompetitionParticipation"/>
+      <xs:field xpath="competitionId"/>
+    </xs:keyref>
+    <xs:keyref name="FK_CompetitionBooking_Facility" refer="facilityIdKey">
+      <xs:selector xpath="CompetitionBookings/CompetitionBooking"/>
+      <xs:field xpath="facilityId"/>
+    </xs:keyref>
+    <xs:keyref name="FK_CompetitionBooking_Competition" refer="competitionIdKey">
+      <xs:selector xpath="CompetitionBookings/CompetitionBooking"/>
+      <xs:field xpath="competitionId"/>
+    </xs:keyref>
+
+  </xs:element>
+</xs:schema>

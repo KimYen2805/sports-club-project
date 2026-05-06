@@ -1,0 +1,85 @@
+
+        {
+            "members": [
+                
+        {
+            "id": 6,
+            "firstName": "Kilian",
+            "lastName": "Mbappe",
+            "email": "mbappe@club.com",
+            "sport": "Football",
+            "level": "Professional",
+            "membership": null
+        },
+        {
+            "id": 1,
+            "firstName": "Lionel",
+            "lastName": "Messi",
+            "email": "messi@club.com",
+            "sport": "Football",
+            "level": "Professional",
+            "membership": 
+        {
+            "plan": "Premium",
+            "fee": 1000,
+            "status": "Active",
+            "startDate": "2024-01-01",
+            "endDate": "2024-12-31"
+        }
+    
+        },
+        {
+            "id": 3,
+            "firstName": "Rafael",
+            "lastName": "Nadal",
+            "email": "nadal@club.com",
+            "sport": "Tennis",
+            "level": "Professional",
+            "membership": 
+        {
+            "plan": "Standard",
+            "fee": 1000,
+            "status": "Active",
+            "startDate": "2024-01-01",
+            "endDate": "2024-12-31"
+        }
+    
+        },
+        {
+            "id": 4,
+            "firstName": "Jane",
+            "lastName": "Smith",
+            "email": "smith@club.com",
+            "sport": "Basketball",
+            "level": "Amateur",
+            "membership": null
+        },
+        {
+            "id": 2,
+            "firstName": "Serena",
+            "lastName": "Williams",
+            "email": "williams@club.com",
+            "sport": "Tennis",
+            "level": "Professional",
+            "membership": 
+        {
+            "plan": "Premium",
+            "fee": 1000,
+            "status": "Active",
+            "startDate": "2024-01-01",
+            "endDate": "2024-12-31"
+        }
+    
+        },
+        {
+            "id": 5,
+            "firstName": "Sun",
+            "lastName": "Yang",
+            "email": "yang@club.com",
+            "sport": "Swimming",
+            "level": "Intermediate",
+            "membership": null
+        }
+            ]
+        }
+    

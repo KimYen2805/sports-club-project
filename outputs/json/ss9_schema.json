@@ -1,0 +1,37 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": ["trainingBookings", "competitionBookings"],
+    "properties": {
+        "trainingBookings": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["id", "facility", "trainingSessionId", "date", "startTime", "endTime"],
+                "properties": {
+                    "id": {"type": "integer"},
+                    "facility": {"type": "string"},
+                    "trainingSessionId": {"type": "integer"},
+                    "date": {"type": "string"},
+                    "startTime": {"type": "string"},
+                    "endTime": {"type": "string"}
+                }
+            }
+        },
+        "competitionBookings": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["id", "facility", "competition", "date", "startTime", "endTime"],
+                "properties": {
+                    "id": {"type": "integer"},
+                    "facility": {"type": "string"},
+                    "competition": {"type": "string"},
+                    "date": {"type": "string"},
+                    "startTime": {"type": "string"},
+                    "endTime": {"type": "string"}
+                }
+            }
+        }
+    }
+}
