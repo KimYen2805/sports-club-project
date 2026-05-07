@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SportsClub xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="SportsClub.xsd">
+<!-- This XML file represents sample data for the Sports Club system.
+  It is structured according to the SportsClub.xsd schema definition.
+
+  The data includes all entities such as Members, Coaches, Teams,
+  Facilities, Equipment, Memberships, and related relationships.
+
+  All primary keys and foreign key constraints defined in the XSD
+  are respected, ensuring data integrity and consistency.
+
+  This file is used to validate the XML structure against the schema
+  and demonstrate correct implementation of the database design.
+
+-->
+<!-- MEMBERS -->
+  <Members>
+    <Member>
+        <id>1</id>
+        <firstName>Lionel</firstName>
+        <lastName>Messi</lastName>
+        <email>messi@club.com</email>
+        <phone>123-456-7890</phone>
+        <sport>Football</sport>
+        <level>Professional</level>
+    </Member>
+    <Member>
+    <id>2</id>
+      <firstName>Serena</firstName>
+        <lastName>Williams</lastName>
+        <email>williams@club.com</email>  
+        <phone>987-654-3210</phone>
+        <sport>Tennis</sport>
+        <level>Professional</level>
+    </Member>
+    <Member>
+        <id>3</id>
+        <firstName>Rafael</firstName>
+        <lastName>Nadal</lastName>
+        <email>nadal@club.com</email>
+        <phone>555-444-5555</phone>
+        <sport>Tennis</sport>
+        <level>Professional</level>
+    </Member>
+    <Member>
+        <id>4</id>
+        <firstName>Jane</firstName>
+        <lastName>Smith</lastName>
+        <email>smith@club.com</email>
+        <phone>555-123-4567</phone>
+        <sport>Basketball</sport>
+        <level>Amateur</level>
+    </Member>
+    <Member>
+        <id>5</id>
+        <firstName>Sun</firstName>
+        <lastName>Yang</lastName>
+        <email>yang@club.com</email>
+        <phone>555-987-6543</phone>
+        <sport>Swimming</sport>
+        <level>Intermediate</level>
+    </Member>
+    <Member>
+        <id>6</id>
+        <firstName>Kilian</firstName>
+        <lastName>Mbappe</lastName>
+        <email>mbappe@club.com</email>
+        <phone>555-555-5555</phone>
+        <sport>Football</sport>
+        <level>Professional</level>
+    </Member>
+  </Members>
+<!-- COACHES -->
+  <Coaches>
+    <Coach>
+        <id>1</id>
+        <firstName>Pep</firstName>
+        <lastName>Guardiola</lastName>
+        <sport
+        >Football</sport>
+        <licenseLevel>Pro</licenseLevel>
+        <experienceYears>20</experienceYears>
+    </Coach>
+    <Coach>
+        <id>2</id>
+        <firstName>Steve</firstName>
+        <lastName>Kerr</lastName>
+        <sport>Basketball</sport>
+        <licenseLevel>Pro</licenseLevel>
+        <experienceYears>10</experienceYears>
+    </Coach>
+    <Coach>
+        <id>3</id>
+        <firstName>Toni</firstName>
+        <lastName>Nadal</lastName>
+        <sport>Tennis</sport>
+        <licenseLevel>Pro</licenseLevel>
+        <experienceYears>15</experienceYears>
+    </Coach>
+    <Coach>
+        <id>4</id>
+        <firstName>Bob</firstName>
+        <lastName>Smith</lastName>
+        <sport>Swimming</sport>
+        <licenseLevel>Intermediate</licenseLevel>
+        <experienceYears>5</experienceYears>
+    </Coach>
+    <Coach>
+        <id>5</id>
+        <firstName>Emily</firstName>
+        <lastName>Johnson</lastName>
+        <sport>Basketball</sport>
+        <licenseLevel>Amateur</licenseLevel>
+        <experienceYears>2</experienceYears>
+    </Coach>
+  </Coaches>
+<!-- Teams -->
+    <Teams>
+        <Team>
+            <id>1</id>
+            <name>Paris Saint-Germain</name>
+            <sport>Football</sport>
+            <level>Professional</level>
+            <season>2024-2025</season>
+            <maxPlayers>25</maxPlayers>
+        </Team>
+        <Team>
+            <id>2</id>
+            <name>World Team Tennis</name>
+            <sport>Tennis</sport>
+            <level>Professional</level>
+            <season>2024</season>
+            <maxPlayers>10</maxPlayers>
+        </Team>
+        <Team>
+            <id>3</id>
+            <name>NBA Team</name>
+            <sport>Basketball</sport>
+            <level>Professional</level>
+            <season>2024-2025</season>
+            <maxPlayers>15</maxPlayers>
+        </Team>
+        <Team>
+            <id>4</id>
+            <name>Pool Pirates</name>
+            <sport>Swimming</sport>
+            <level>Intermediate</level>
+            <season> 2024</season>
+            <maxPlayers>20</maxPlayers>
+        </Team>
+    </Teams>
+    <!-- FACILITIES -->
+    <Facilities>
+        <Facility>
+            <id>1</id>
+            <name>Stade de France</name>
+            <type>Outdoor</type>
+            <capacity>80000</capacity>
+            <hourlyRate>1000</hourlyRate>
+            <status>Available</status>
+        </Facility>
+        <Facility>
+            <id>2</id>
+            <name>Roland Garros</name>
+            <type>Outdoor</type>
+            <capacity>15000</capacity>
+            <hourlyRate>800</hourlyRate>
+            <status>Available</status>
+        </Facility>
+        <Facility>
+            <id>3</id>
+            <name>NBA Arena</name>
+            <type>Indoor</type>
+            <capacity>20000</capacity>
+            <hourlyRate>1200</hourlyRate>
+            <status>Available</status>
+        </Facility>
+        <Facility>
+            <id>4</id>
+            <name>Olympic Pool</name>
+            <type>Outdoor</type>
+            <capacity>5000</capacity>
+            <hourlyRate>500</hourlyRate>
+            <status>Available</status>
+        </Facility>
+    </Facilities>
+<!-- EQUIPMENT -->
+    <Equipments>
+        <Equipment>
+            <id>1</id>
+            <name>Adidas Football</name>
+            <type>Ball</type>
+            <condition>Good</condition>
+            <quantity>50</quantity>
+            <facilityId>1</facilityId>
+        </Equipment>
+        <Equipment>
+            <id>2</id>
+            <name> Wilson Tennis Racket</name>
+            <type>Racket</type>
+            <condition>Good</condition>
+            <quantity>30</quantity>
+            <facilityId>2</facilityId>
+        </Equipment>
+        <Equipment>
+            <id>3</id>
+            <name>Spalding Basketball</name>
+            <type>Ball</type>
+            <condition>Good</condition>
+            <quantity>40</quantity>
+            <facilityId>3</facilityId>
+        </Equipment>
+        <Equipment>
+            <id>4</id>
+            <name>Speedo Goggles</name>
+            <type>Accessory</type>
+            <condition>Good</condition>
+            <quantity>20</quantity>
+            <facilityId>4</facilityId>
+        </Equipment>
+</Equipments>
+<!-- MemberShip -->
+    <Memberships>
+        <Membership>
+            <id>1</id>
+            <memberId>1</memberId>
+            <plan>Premium</plan>
+            <fee>1000</fee>
+            <status>Active</status>
+            <startDate>2024-01-01</startDate>
+            <endDate>2024-12-31</endDate>
+        </Membership>
+        <Membership>
+            <id>2</id>
+            <memberId>2</memberId>
+            <plan>Premium</plan>
+            <fee>1000</fee>
+            <status>Active</status>
+            <startDate>2024-01-01</startDate>
+            <endDate>2024-12-31</endDate>
+        </Membership>
+        <Membership>
+            <id>3</id>
+            <memberId>3</memberId>
+            <plan>Standard</plan>
+            <fee>1000</fee>
+            <status>Active</status>
+            <startDate>2024-01-01</startDate>
+            <endDate>2024-12-31</endDate>
+        </Membership>
+    </Memberships>
+<!-- Team Memberships -->
+    <TeamMemberships>
+        <TeamMembership>
+            <id>1</id>
+            <memberId>1</memberId>
+            <teamId>1</teamId>
+            <role>Player</role>
+            <joinDate>2024-01-01</joinDate>
+        </TeamMembership>
+        <TeamMembership>
+            <id>2</id>
+            <memberId>6</memberId>
+            <teamId>1</teamId>
+            <role>Player</role>
+            <joinDate>2024-01-01</joinDate>
+        </TeamMembership>
+        <TeamMembership>
+            <id>3</id>
+            <memberId>2</memberId>
+            <teamId>2</teamId>
+            <role>Player</role>
+            <joinDate>2024-01-01</joinDate>
+        </TeamMembership>
+        <TeamMembership>
+            <id>4</id>
+            <memberId>3</memberId>
+            <teamId>2</teamId>
+            <role>Player</role>
+            <joinDate>2024-01-01</joinDate>
+        </TeamMembership>
+        <TeamMembership>
+            <id>5</id>
+            <memberId>4</memberId>
+            <teamId>3</teamId>
+            <role>Player</role>
+            <joinDate>2024-01-01</joinDate>
+        </TeamMembership>
+    </TeamMemberships>
+<!-- Coaching Assignments -->
+    <CoachingAssignments>
+        <CoachingAssignment>
+            <id>1</id>
+            <coachId>1</coachId>
+            <teamId>1</teamId>
+            <role>Head Coach</role>
+            <startDate>2024-01-01</startDate>
+        </CoachingAssignment>
+        <CoachingAssignment>
+            <id>2</id>
+            <coachId>3</coachId>
+            <teamId>2</teamId>
+            <role>Head Coach</role>
+            <startDate>2024-01-01</startDate>
+        </CoachingAssignment>
+        <CoachingAssignment>
+            <id>3</id>
+            <coachId>2</coachId>
+            <teamId>3</teamId>
+            <role>Coach</role>
+            <startDate>2024-01-01</startDate>
+        </CoachingAssignment>
+        <CoachingAssignment>
+            <id>4</id>
+            <coachId>4</coachId>
+            <teamId>4</teamId>
+            <role>Coach</role>
+            <startDate>2024-01-01</startDate>
+        </CoachingAssignment>
+    </CoachingAssignments>
+<!-- Training Sessions -->
+    <TrainingSessions>
+        <TrainingSession>
+            <id>1</id>
+            <teamId>1</teamId>
+            <coachId>1</coachId>
+            <date>2024-01-30</date>
+            <startTime>10:00:00</startTime>
+            <duration>120</duration>
+            <location>Stade de France</location>
+        </TrainingSession>
+        <TrainingSession>
+            <id>2</id>
+            <teamId>2</teamId>
+            <coachId>3</coachId>
+            <date>2024-01-29</date>
+            <startTime>14:00:00</startTime>
+            <duration>90</duration>
+            <location>Roland Garros</location>
+        </TrainingSession>
+        <TrainingSession>
+            <id>3</id>
+            <teamId>3</teamId>
+            <coachId>2</coachId>
+            <date>2024-01-28</date>
+            <startTime>16:00:00</startTime>
+            <duration>120</duration>
+            <location>NBA Arena</location>
+        </TrainingSession>
+        <TrainingSession>
+            <id>4</id>
+            <teamId>4</teamId>
+            <coachId>4</coachId>    
+            <date>2024-01-27</date>
+            <startTime>09:00:00</startTime>
+            <duration>60</duration>
+            <location>Olympic Pool</location>
+        </TrainingSession>
+    </TrainingSessions>
+<!-- Training Booking -->
+    <TrainingBookings>
+        <TrainingBooking>
+            <id>1</id>
+            <facilityId>1</facilityId>
+            <trainingSessionId>1</trainingSessionId>
+            <date>2024-01-30</date>
+            <startTime>10:00:00</startTime>
+            <endTime>12:00:00</endTime>
+        </TrainingBooking>
+        <TrainingBooking>
+            <id>2</id>
+            <facilityId>2</facilityId>
+            <trainingSessionId>2</trainingSessionId>
+            <date>2024-01-29</date>
+            <startTime>14:00:00</startTime>
+            <endTime>15:30:00</endTime>
+        </TrainingBooking>
+</TrainingBookings>
+<!-- Competitions -->
+    <Competitions>
+        <Competition>
+            <id>1</id>
+            <name>UEFA Champions League</name>
+            <format>Knockout</format>
+            <startDate>2024-02-01</startDate>
+            <endDate>2024-05-30</endDate>   
+            <prize>10000000</prize>
+        </Competition>
+        <Competition>
+            <id>2</id>
+            <name>Wimbledon</name>
+            <format>League</format>
+            <startDate>2024-06-01</startDate>
+            <endDate>2024-06-30</endDate>
+            <prize>5000000</prize>
+        </Competition>
+    </Competitions>
+<!-- Competition Participations -->
+    <CompetitionParticipations>
+        <CompetitionParticipation>
+            <id>1</id>
+            <teamId>1</teamId>
+            <competitionId>1</competitionId>
+            <result>Winner</result>
+        </CompetitionParticipation>
+        <CompetitionParticipation>
+            <id>2</id> 
+            <teamId>2</teamId>
+            <competitionId>2</competitionId>
+            <result>Runner-up</result>
+        </CompetitionParticipation>
+    </CompetitionParticipations>
+<!-- Competition Bookings -->
+    <CompetitionBookings>
+        <CompetitionBooking>
+            <id>1</id>
+            <facilityId>1</facilityId>
+            <competitionId>1</competitionId>
+            <date>2024-02-01</date>
+            <startTime>20:00:00</startTime>
+            <endTime>22:00:00</endTime>
+        </CompetitionBooking>
+        <CompetitionBooking>
+            <id>2</id>
+            <facilityId>2</facilityId>
+            <competitionId>2</competitionId>
+            <date>2024-06-01</date>
+            <startTime>10:00:00</startTime>
+            <endTime>18:00:00</endTime>
+        </CompetitionBooking>
+    </CompetitionBookings>
+</SportsClub>
